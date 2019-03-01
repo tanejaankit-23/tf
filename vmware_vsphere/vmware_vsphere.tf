@@ -26,7 +26,7 @@ data "vsphere_compute_cluster" "cluster" {
 }
 
 data "vsphere_network" "network" {
-  name          = "VM Network"
+  name          = "Client_35"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
@@ -42,7 +42,7 @@ resource "vsphere_virtual_machine" "vm" {
   folder           = "vm"
 
   num_cpus = 2
-  memory   = 16384
+  memory   = 8192
   wait_for_guest_net_timeout = 0
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
 
@@ -52,7 +52,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   disk {
     label = "disk0"
-    size  = 150
+    size  = 50
     thin_provisioned = true
   }
   
