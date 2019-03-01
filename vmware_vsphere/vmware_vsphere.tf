@@ -31,7 +31,7 @@ data "vsphere_network" "network" {
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "ubuntu-minimal-template"
+  name          = "UbuntuTemplate"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
@@ -39,7 +39,7 @@ resource "vsphere_virtual_machine" "vm" {
   name             = "terraform-test-vm-2"
   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
-  folder           = "vm"
+  folder           = "Test"
 
   num_cpus = 2
   memory   = 8192
