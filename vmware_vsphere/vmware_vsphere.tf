@@ -31,12 +31,12 @@ data "vsphere_network" "network" {
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "extata_ubuntu"
+  name          = "file01_template"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  name             = "terraform-test-vm"
+  name             = "terraform-test-vm-1"
   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
   folder           = "vm"
@@ -56,7 +56,7 @@ resource "vsphere_virtual_machine" "vm" {
     thin_provisioned = true
   }
   
-  clone {
-    template_uuid = "${data.vsphere_virtual_machine.template.id}"
-  }
+ # clone {
+  #  template_uuid = "${data.vsphere_virtual_machine.template.id}"
+ # }
 }
