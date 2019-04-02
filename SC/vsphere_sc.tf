@@ -73,3 +73,28 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
   }
 }
+
+output "vmware_instance_ip" {
+  description = "ip"
+  value       = "${vsphere_virtual_machine.vm.*.default_ip_address[0]}"
+}
+
+output "vmware_instance_name" {
+  description = "name"
+  value       = "${vsphere_virtual_machine.vm.*.name[0]}"
+}
+
+output "vmware_instance_disk" {
+  description = "disk"
+  value       = "${vsphere_virtual_machine.vm.*.disk[0]}"
+}
+
+output "vmware_instance_cpus" {
+  description = "cpus"
+  value       = "${vsphere_virtual_machine.vm.*.num_cpus[0]}"
+}
+
+output "vmware_instance_memory" {
+  description = "memory"
+  value       = "${vsphere_virtual_machine.vm.*.memory[0]}"
+}
