@@ -84,11 +84,6 @@ output "vmware_instance_name" {
   value       = "${vsphere_virtual_machine.vm.*.name[0]}"
 }
 
-output "vmware_instance_disk" {
-  description = "disk"
-  value       = "${vsphere_virtual_machine.vm.*.disk[0]}"
-}
-
 output "vmware_instance_cpus" {
   description = "cpus"
   value       = "${vsphere_virtual_machine.vm.*.num_cpus[0]}"
