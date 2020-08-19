@@ -1,11 +1,10 @@
-provider "docker" 
-{   host = "tcp://vviedksw01.sbb01.spoc.global:2375" 
-    
+# Configure the Docker provider
+provider "docker" {
+  host = "tcp://127.0.0.1:2376/"
 }
 
-
-
-resource "docker_container" "new-sample" {
+# Create a container
+resource "docker_container" "Infra_manager" {
   name  = "${random_string.random_name.result}"
   image = "${docker_image.dummy_image.latest}"
   entrypoint = ["/bin/sleep"]
@@ -13,11 +12,11 @@ resource "docker_container" "new-sample" {
 }
 
 resource "docker_image" "dummy_image" {
-  name = "busybox:latest"
-}
-
+	  name = "busybox:latest"
+	}
+	
 resource "random_string" "random_name" {
-	length  = 5
-	special = false
-	lower   = false
-} 
+		length  = 5
+		special = false
+		lower   = false
+	} 
