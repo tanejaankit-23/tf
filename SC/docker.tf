@@ -1,5 +1,5 @@
 # Configure the Docker provider
-provider "terraform-providers/docker" {
+provider "docker" {
   host = "tcp://10.49.165.112:2375/"
 }
 
